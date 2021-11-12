@@ -73,9 +73,9 @@ async function run() {
                 isAdmin = true;
                 res.json({admin:isAdmin});
             }
-            // else{
-            //     res.status(403).json({message:''})
-            // }
+            else{
+                res.status(403).json({message:''})
+            }
         })
 
         //admin role using put 
@@ -87,7 +87,7 @@ async function run() {
                 $set: { role : 'admin'}
             };
             const result = await userCollection.updateOne(filter,updateDoc);
-            console.log(result);
+            // console.log(result);
             res.json(result)
         })
 
@@ -126,7 +126,7 @@ async function run() {
                 }
             };
             const result = await orderCollection.updateOne(filter,updateDoc,options);
-            console.log(result);
+            // console.log(result);
             res.json(result);
         })
 
@@ -135,7 +135,7 @@ async function run() {
             const id = req.params.id;
             const filter = {_id:ObjectId(id)};
             const result = await orderCollection.deleteOne(filter);
-            console.log(result);
+            // console.log(result);
             res.json(result);
         })
 
