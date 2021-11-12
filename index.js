@@ -71,8 +71,9 @@ async function run() {
             let isAdmin = false;
             if(userAdmin?.role === 'admin') {
                 isAdmin = true;
-                res.json({admin:isAdmin});
+                
             }
+            res.json({admin:isAdmin});
             // else{
             //     res.status(403).json({message:''})
             // }
@@ -119,13 +120,13 @@ async function run() {
         app.put('/allorder/:id',async (req,res)=>{
             const id = req.params.id;
             const filter = {_id:ObjectId(id)};
-            const options = {upsert: true};
+            // const options = {upsert: true};
             const updateDoc = {
                 $set: {
                     status: 'shipped'
                 }
             };
-            const result = await orderCollection.updateOne(filter,updateDoc,options);
+            const result = await orderCollection.updateOne(filter,updateDoc);
             // console.log(result);
             res.json(result);
         })
