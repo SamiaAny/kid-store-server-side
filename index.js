@@ -74,9 +74,7 @@ async function run() {
                 
             }
             res.json({admin:isAdmin});
-            // else{
-            //     res.status(403).json({message:''})
-            // }
+            
         })
 
         //admin role using put 
